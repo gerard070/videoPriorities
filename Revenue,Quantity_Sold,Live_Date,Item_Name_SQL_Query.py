@@ -31,7 +31,7 @@ last_year = datetime(today_date.year-1, today_date.month, today_date.day)
 
 #this is the query
 q = """
---seems like previous commit did not work, testing                                                                                                                           
+                                                                                                                          
 select item_id, sum(sum_of_sales) as Total_Sales, sum(units_sold) as Total_Quantity_sold, live_date::date , name from
 (
 
