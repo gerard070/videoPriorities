@@ -35,7 +35,9 @@ q = """
 select item_id, sum(sum_of_sales) as Total_Sales, sum(units_sold) as Total_Quantity_sold, live_date::date , name from       
 (                                                                                                                           
                                                                                                                             
-Select live_items.item_id, case when sum_sales.sum is null then 0 else sum_sales.sum end Sum_of_Sales, case when sum_sales.u
+Select live_items.item_id, case when sum_sales.sum is null then 0 else sum_sales.sum end Sum_of_Sales, 
+case when sum_sales.units_sold is null then 0 else sum_sales.units_sold End Units_sold, live_items.live_date
+
 from                                                                                                                        
                                                                                                                             
                                                                                                                             
@@ -59,7 +61,7 @@ where live_date is not null
 and status_id = 1) as Live_items                                                                                            
     on Live_items.item_id = sum_sales.item_number::NUMERIC                                                                  
                                                                                                                             
-group by  live_items.item_id, sum_sales.sum, sum_sales.units_sold, live_items.live_date, Live_items.name) all_Sales_Data_For
+group by  live_items.item_id, sum_sales.sum, sum_sales.units_sold, live_items.live_date, Live_items.name) all_Sales_Data_For_Live_items
 where item_id != 99999                                                                                                      
 group by all_Sales_Data_For_Live_Items.item_id, all_Sales_Data_For_Live_Items.live_date, all_Sales_Data_For_Live_Items.name 
 
