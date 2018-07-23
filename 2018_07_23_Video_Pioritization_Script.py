@@ -36,8 +36,7 @@ def find_row(sheet):
 def ga_query(start_date, end_date, filter_var, metrics, dimensions, max_results, segment, sort):
 
     ## The GA object takes  a profile ID and the location of your credential file as argument to create the object
-    External = GA('120725274', filelocation='/opt/mnt/publicdrive/Analytics/Gerard/Utils/GA/')
-    #External = GA('120725274', filelocation='/Volumes/ugcompanystorage/Company/public/Analytics/Gerard/Utils/GA/')
+    External = GA('Universal Key', filelocation='/opt/mnt/publicdrive/Analytics/Gerard/Utils/GA/')
     query_response = External.get_results(start_date=start_date,
                     end_date=end_date,
                     filter_var=(None if filter_var==0 else filter_var),
